@@ -1,5 +1,14 @@
 # ImgRadarNet｜图像与雷达融合网络
 
+## 项目资料地图
+
+- [26smartcar](https://github.com/Geezer565/26smartcar)：车辆基础、硬件接入和部署。
+- [oncar](https://github.com/Geezer565/oncar)：最终车端运行、任务流程和上位机协同。
+- [data_collect](https://github.com/Geezer565/data_collect)：采集、标注、训练和过程记录。
+- [ImgRadarNet](https://github.com/Geezer565/ImgRadarNet)：图像与雷达融合网络的精简实现。
+- [smartcar-dataset-v22](https://github.com/Geezer565/smartcar-dataset-v22)：最终 V22 数据资料。
+- [smartcar-model-v22](https://github.com/Geezer565/smartcar-model-v22)：最终 V22 模型与车端转换结果。
+
 这是智能车项目中“如何把一张图像和一圈雷达信息一起用于预测”的精简实现。它把模型、数据读取、训练和推理保留在很小的范围内，适合单独理解图像—雷达融合的基本思路。
 
 ## 这个仓库适合谁

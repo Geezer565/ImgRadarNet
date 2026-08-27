@@ -1,44 +1,67 @@
-# ImgRadarNet｜图像与雷达融合网络
+# ImgRadarNet｜图像与雷达融合网络的精简实现
+
+> 一个独立、精简的图像—雷达融合网络示例。它保留模型、数据读取、训练和推理的核心代码，适合快速理解项目中的融合思路。
 
 ## 项目资料地图
 
-- [26smartcar](https://github.com/Geezer565/26smartcar)：车辆基础、硬件接入和部署。
-- [oncar](https://github.com/Geezer565/oncar)：最终车端运行、任务流程和上位机协同。
-- [data_collect](https://github.com/Geezer565/data_collect)：采集、标注、训练和过程记录。
-- [ImgRadarNet](https://github.com/Geezer565/ImgRadarNet)：图像与雷达融合网络的精简实现。
-- [smartcar-dataset-v22](https://github.com/Geezer565/smartcar-dataset-v22)：最终 V22 数据资料。
-- [smartcar-model-v22](https://github.com/Geezer565/smartcar-model-v22)：最终 V22 模型与车端转换结果。
+| 资料 | 作用 |
+| --- | --- |
+| [26smartcar](https://github.com/Geezer565/26smartcar) | 车辆基础、硬件接入与部署 |
+| [oncar](https://github.com/Geezer565/oncar) | 最终车端运行、任务流程和上位机协同 |
+| [data_collect](https://github.com/Geezer565/data_collect) | 采集、标注、训练和过程记录 |
+| [ImgRadarNet](https://github.com/Geezer565/ImgRadarNet) | 图像与雷达融合网络的精简实现（本仓库） |
+| [smartcar-dataset-v22](https://github.com/Geezer565/smartcar-dataset-v22) | 最终 V22 图像、标注与雷达数据 |
+| [smartcar-model-v22](https://github.com/Geezer565/smartcar-model-v22) | 最终 V22 模型与车端转换结果 |
 
-这是智能车项目中“如何把一张图像和一圈雷达信息一起用于预测”的精简实现。它把模型、数据读取、训练和推理保留在很小的范围内，适合单独理解图像—雷达融合的基本思路。
+## 1. 适合用来做什么
 
-## 这个仓库适合谁
+- 快速理解图像和雷达如何一起进入一个预测模型。
+- 作为阅读完整训练工程前的最小入口。
+- 用自己的同格式数据验证训练、推理和结果检查流程。
 
-- 想快速了解图像和雷达如何一起输入模型的人。
-- 想从简单代码开始复现训练与推理流程的人。
-- 想对照完整训练工程、理解核心网络结构的人。
+它不承担车辆部署、完整数据处理或全部实验记录；这些内容请看 `data_collect`、`oncar` 和 `26smartcar`。
 
-## 文件说明
+## 2. 文件说明
 
-- `model.py`：融合网络结构。
-- `dataset.py`：图像和雷达训练数据读取。
-- `train.py`：训练入口。
-- `infer.py`：单次推理示例。
-- `test.py`：测试与验证。
-- `utils.py`：通用辅助方法。
+| 文件 | 作用 |
+| --- | --- |
+| `model.py` | 图像与雷达融合网络结构 |
+| `dataset.py` | 图像和雷达训练数据读取 |
+| `train.py` | 训练入口 |
+| `infer.py` | 推理示例 |
+| `test.py` | 测试与验证 |
+| `utils.py` | 通用辅助方法 |
 
-## 与完整工程的关系
+## 3. 使用前需要准备
 
-这个仓库是模型思路的精简入口，不承担实车部署和完整实验记录：
+要运行这份示例，需要先准备：
 
-- 完整采集、标注、训练、验证和转换流程在 [`data_collect`](https://github.com/Geezer565/data_collect)。
-- 最终 V22 数据资料在 [`smartcar-dataset-v22`](https://github.com/Geezer565/smartcar-dataset-v22)。
-- 最终 V22 模型和车端转换结果在 [`smartcar-model-v22`](https://github.com/Geezer565/smartcar-model-v22)。
-- 实体车端运行请看 [`oncar`](https://github.com/Geezer565/oncar) 与 [`26smartcar`](https://github.com/Geezer565/26smartcar)。
+1. 与脚本读取方式匹配的图像、雷达和标签资料。
+2. 能运行深度学习训练的 Python 环境。
+3. 与数据格式一致的图像尺寸、雷达长度和标签定义。
 
-## 使用提示
+如果目标是复现项目最后阶段的完整训练结果，应转到 `data_collect`，并使用独立保存的 V22 数据和模型资料。
 
-示例代码需要与实际数据格式保持一致。若要在自己的项目中使用，请先确认图像尺寸、雷达长度、标签含义和模型输出是否匹配。
+## 4. 与完整工程的关系
 
-## 归档说明
+```text
+ImgRadarNet：理解核心网络
+       ↓
+data_collect：完整采集、训练与验证方法
+       ↓
+smartcar-dataset-v22 / smartcar-model-v22：最终数据与模型
+       ↓
+oncar / 26smartcar：实体车端运行
+```
 
-这是一份最终精简版，只保留最核心的代码，便于阅读和后续引用。大型数据、训练结果和车辆环境资料已拆分到对应仓库。
+## 5. 公开与使用说明
+
+本仓库目前不含原始数据、训练结果、现场图片或服务密钥，是最适合优先公开的一份资料。
+
+### 建议的许可方式
+
+建议使用 **MIT 许可**。它允许他人学习、修改和再次使用代码，但要求保留原作者和许可说明。若你确认采用 MIT，我可以为这个仓库补上正式许可文件和简短的引用说明。
+
+## 6. 归档说明
+
+这是最终项目中的“最小可读版本”。它用于展示融合网络的结构和思路，不代表可以直接控制真实车辆。
